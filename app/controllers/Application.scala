@@ -12,5 +12,13 @@ object Application extends Controller {
   def index = Action {
     Ok(views.html.index())
   }
+
+  def position = Action {
+    Ok(views.html.position())
+  }
+
+  def keyboard = Action {
+    Ok(views.html.keyboard())
+  }
   
 }

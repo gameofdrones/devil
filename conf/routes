@@ -8,6 +8,8 @@ GET     /                              controllers.Application.main(url = "")
 # ####### VIEWS
 # (serving HTML, used in Angular routing)
 GET     /views/index                   controllers.Application.index
+GET     /views/position                controllers.Application.position
+GET     /views/keyboard                controllers.Application.keyboard
 
 # ####### API
 # (serving JSON, used in Angular services)

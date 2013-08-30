@@ -13,9 +13,13 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
         url: "/",
         templateUrl: "/views/index"
       })
-      .state("aze", {
-        url: "/aze",
-        templateUrl: "/views/index"
+      .state("position", {
+        url: "/position",
+        templateUrl: "/views/position"
+      })
+      .state("keyboard", {
+        url: "/keyboard",
+        templateUrl: "/views/keyboard"
       });
 
       $urlRouterProvider.otherwise("/");
