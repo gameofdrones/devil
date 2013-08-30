@@ -177,7 +177,6 @@
 	margin-top: 100px;
 }
 
-
 .arrow-btn {
 	position: relative;
 	background-color: #dadfde;
@@ -200,7 +199,6 @@
 			font: bold 28px/80px sans-serif;		
 			text-align: center;
 			text-decoration: none;
-			
 			.transition(.2s);
 			.transform(rotate(-45deg));
 
@@ -218,7 +216,7 @@
 		overflow: hidden;
 		width: 50%;
 		.border-radius(100% 0 0 0);
-		.box-shadow(0 0 1px hsla(0, 0, 0, .4));
+		.box-shadow(0 0 1px rgba(0, 0, 0, .4));
 
 		&:nth-child(2) { .transform(rotate(90deg)); }
 		&:nth-child(3) { .transform(rotate(-90deg)); }
@@ -230,9 +228,7 @@
 	margin-right: 200px;
 	cursor: pointer;
 
-	&:hover {
-		.inner-text { .gradient-vertical(lighten(@main-color, 5%), 0%, lighten(@main-color-2, 5%), 100%); }
-	}
+	&:hover { .inner-text { .gradient-vertical(lighten(@main-color, 5%), 0%, lighten(@main-color-2, 5%), 100%); } }
 
 	.outer {
 		position: relative;
