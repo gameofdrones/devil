@@ -15,7 +15,8 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
       })
       .state("position", {
         url: "/position",
-        templateUrl: "/views/position"
+        templateUrl: "/views/position",
+        controller: "PositionCtrl"
       })
       .state("keyboard", {
         url: "/keyboard",
@@ -42,5 +43,9 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
       return _.filter($rootScope.launchers, function (launcher) {
         return launcher.selected;
       });
+    };
+
+    $rootScope.isDigesting = function () {
+      return ($rootScope.$$phase === "$apply" || $rootScope.$$phase === "$digest");
     };
   }]);

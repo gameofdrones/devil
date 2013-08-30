@@ -1,71 +1,74 @@
 app.controller("KeyboardCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
-  console.log("toto");
+  
+  $scope.actions = {};
 
-  function start(action) {
-    console.log("start", action);
+  $scope.start = function (action) {
+    $scope.actions[action] = true;
     _.forEach($rootScope.selectedLaunchers(), function (launcher) {
       launcher.start(action);
     });
-    $scope.$digest();
-  }
+    if (!$scope.isDigesting()) {
+      $scope.$digest();
+    }
+  };
 
-  function end(action) {
-    console.log("end", action);
+  $scope.end = function (action) {
+    $scope.actions[action] = false;
     _.forEach($rootScope.selectedLaunchers(), function (launcher) {
       launcher.end(action);
     });
-    $scope.$digest();
-  }
+    if (!$scope.isDigesting()) {
+      $scope.$digest();
+    }
+  };
 
   keypress.register_combo({
     "keys": "space",
     "on_keydown": function () {
-      // console.log("SPACE");
-      start("fire");
+      $scope.start("fire");
     },
     "on_keyup": function () {
-      // console.log("up");
-      end("fire");
+      $scope.end("fire");
     }
   });
 
   keypress.register_combo({
     "keys": "up",
     "on_keydown": function () {
-      start("up");
+      $scope.start("up");
     },
     "on_keyup": function () {
-      end("up");
+      $scope.end("up");
     }
   });
 
   keypress.register_combo({
     "keys": "down",
     "on_keydown": function () {
-      start("down");
+      $scope.start("down");
     },
     "on_keyup": function () {
-      end("down");
+      $scope.end("down");
     }
   });
 
   keypress.register_combo({
     "keys": "left",
     "on_keydown": function () {
-      start("left");
+      $scope.start("left");
     },
     "on_keyup": function () {
-      end("left");
+      $scope.end("left");
     }
   });
 
   keypress.register_combo({
     "keys": "right",
     "on_keydown": function () {
-      start("right");
+      $scope.start("right");
     },
     "on_keyup": function () {
-      end("right");
+      $scope.end("right");
     }
   });
 }]);

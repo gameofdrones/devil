@@ -5,9 +5,6 @@ app.factory("Launchers", ["Restangular", "$http", function (Restangular, $http) 
     this.actions = {};
     this.api = Restangular.withConfig(function(RestangularConfigurer) {
       RestangularConfigurer.setBaseUrl(data.url);
-      // RestangularConfigurer.defaultHeaders = {
-      //   "Content-Type": "application/json"
-      // };
     });
   }
 
@@ -16,6 +13,8 @@ app.factory("Launchers", ["Restangular", "$http", function (Restangular, $http) 
   };
 
   Launcher.prototype.fireAt = function (x, y) {
+    x = _.isNumber(x) ? x : _.random(100);
+    y = _.isNumber(y) ? y : _.random(10);
     return this.api.all("rocket").doPUT({x: x, y: y});
   };
 
@@ -44,8 +43,7 @@ app.factory("Launchers", ["Restangular", "$http", function (Restangular, $http) 
 
   Launcher.prototype.fire = function () {
     console.log("Action: fire");
-    return this.fireAt(_.random(90), _.random(10));
-    //return this.api.one("actions", "fire").put();
+    return this.api.one("actions", "fire").put();
   };
 
   Launcher.prototype.stop = function () {

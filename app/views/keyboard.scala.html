@@ -2,14 +2,14 @@
 <div class="controls">
 	<nav class="arrow-btn left">
 		<ul>
-			<li><a href="#">▲</a></li>
-			<li><a href="#">▲</a></li>
-			<li><a href="#">▲</a></li>
-			<li><a href="#">▲</a></li>
+			<li><a ng-mousedown="start('up')" ng-mouseup="end('up')" ng-class="{active: actions.up}">▲</a></li>
+			<li><a ng-mousedown="start('right')" ng-mouseup="end('right')" ng-class="{active: actions.right}">▲</a></li>
+			<li><a ng-mousedown="start('left')" ng-mouseup="end('left')" ng-class="{active: actions.left}">▲</a></li>
+      <li><a ng-mousedown="start('down')" ng-mouseup="end('down')" ng-class="{active: actions.down}">▲</a></li>
 		</ul>
 	</nav>
 
-	<div class="fire-btn right">
+	<div class="fire-btn right" ng-mousedown="start('fire')" ng-mouseup="end('fire')" ng-class="{active: actions.fire}">
 		<div class="outer">
 			<div class="inner">
 				<div class="inner-text">FIRE</div>
