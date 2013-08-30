@@ -265,6 +265,14 @@ module.exports = function (grunt) {
           src: ["*.js"],
           dest: "<%= config.dir.public.scripts %>/vendors/angular-ui/utils/"
         }]
+      },
+      bowerKeypress: {
+        files: [{
+          expand: true,
+          cwd: "<%= config.dir.components.root %>/Keypress/",
+          src: ["*.js"],
+          dest: "<%= config.dir.public.scripts %>/vendors/keypress/"
+        }]
       }
     },
 
@@ -320,7 +328,8 @@ module.exports = function (grunt) {
           "copy:bowerAngular",
           "copy:bowerRestangular",
           "copy:bowerAngularUiRouter",
-          "copy:bowerAngularUiUtils"
+          "copy:bowerAngularUiUtils",
+          "copy:bowerKeypress"
         ]
       }
     },

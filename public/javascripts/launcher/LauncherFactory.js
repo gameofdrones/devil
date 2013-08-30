@@ -1,47 +1,77 @@
-app.factory("Launchers", ["Restangular", function (Restangular) {
+app.factory("Launchers", ["Restangular", "$http", function (Restangular, $http) {
   function Launcher (data) {
     this.id = data.id;
     this.url = data.url;
+    this.actions = {};
     this.api = Restangular.withConfig(function(RestangularConfigurer) {
       RestangularConfigurer.setBaseUrl(data.url);
+      // RestangularConfigurer.defaultHeaders = {
+      //   "Content-Type": "application/json"
+      // };
     });
-
-    this.position = function () {
-      return Restangular.all("position").doGET();
-    };
-
-    this.fireAt = function (x, y) {
-      this.api.all("rocket").doPUT();
-    };
-
-    this.goTo = function (x, y) {
-
-    };
-
-    this.fire = function () {
-      this.api.one("actions", "fire").doPUT();
-    };
-
-    this.stop = function () {
-      this.api.one("actions", "stop").doPUT();
-    };
-
-    this.up = function () {
-      this.api.one("actions", "up").doPOST();
-    };
-
-    this.down = function () {
-      this.api.one("actions", "down").doPOST();
-    };
-
-    this.left = function () {
-      this.api.one("actions", "left").doPOST();
-    };
-
-    this.right = function () {
-      this.api.one("actions", "right").doPOST();
-    };
   }
+
+  Launcher.prototype.position = function () {
+    return Restangular.all("position").doGET();
+  };
+
+  Launcher.prototype.fireAt = function (x, y) {
+    return this.api.all("rocket").doPUT({x: x, y: y});
+  };
+
+  Launcher.prototype.goTo = function (x, y) {
+
+  };
+
+  Launcher.prototype.start = function (action) {
+    if (!this.actions[action]) {
+      this.actions[action] = true;
+      this[action]();
+    }
+  };
+
+  Launcher.prototype.end = function (action) {
+    var self = this;
+    self.actions[action] = false;
+    self.stop().then(function () {
+      _.forEach(this.actions, function (value, action) {
+        if (value) {
+          self[action]();
+        }
+      });
+    });
+  };
+
+  Launcher.prototype.fire = function () {
+    console.log("Action: fire");
+    return this.fireAt(_.random(90), _.random(10));
+    //return this.api.one("actions", "fire").put();
+  };
+
+  Launcher.prototype.stop = function () {
+    console.log("Action: stop");
+    return this.api.one("actions", "stop").put();
+  };
+
+  Launcher.prototype.up = function () {
+    console.log("Action: up");
+    return this.api.one("actions", "up").post();
+  };
+
+  Launcher.prototype.down = function () {
+    console.log("Action: down");
+    return this.api.one("actions", "down").post();
+  };
+
+  Launcher.prototype.left = function () {
+    console.log("Action: left");
+    return this.api.one("actions", "left").post();
+  };
+
+  Launcher.prototype.right = function () {
+    console.log("Action: right");
+    return this.api.one("actions", "right").post();
+  };
 
   function all() {
     return Restangular.all("launchers").getList();

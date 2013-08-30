@@ -9,6 +9,7 @@
     "angular-latest": "~1.1.5",
     "restangular": "1.1.1",
     "angular-ui-utils": "v0.0.4",
-    "angular-ui-router": "0.0.1"
+    "angular-ui-router": "0.0.1",
+    "Keypress": "git://github.com/dmauro/Keypress.git"
   }
 }
