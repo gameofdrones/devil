@@ -1,0 +1,209 @@
+// Utilities
+// -------------------------
+
+// Clearfix - http://nicolasgallagher.com/micro-clearfix-hack/
+.clearfix() {
+	&:before,
+	&:after {
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Center-align a block level element
+.center() {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Center-align text
+.t-center { text-align: center; }
+
+// CSS3 Properties
+// -------------------------
+
+// Border-radius
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+	   -moz-border-radius: @radius;
+			border-radius: @radius;
+}
+
+// Drop shadows
+.box-shadow(@shadow) {
+	-webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+	   -moz-box-shadow: @shadow;
+			box-shadow: @shadow;
+}
+
+// Transitions
+.transition(@transition) {
+	-webkit-transition: @transition;
+	   -moz-transition: @transition;
+		 -o-transition: @transition;
+			transition: @transition;
+}
+
+// Animations
+.animation(@animation) {
+	-webkit-animation: @animation;
+	   -moz-animation: @animation;
+			animation: @animation;
+}
+
+.animation-delay(@animation-delay) {
+	-webkit-animation-delay: @animation-delay;
+	   -moz-animation-delay: @animation-delay;
+			animation-delay: @animation-delay;
+}
+
+// Transformations
+.transform(@properties) { // For adding multiple properties
+	-webkit-transform: @properties;
+		-ms-transform: @properties;
+			transform: @properties;
+}
+.rotate(@degrees) {
+	-webkit-transform: rotate(@degrees);
+		-ms-transform: rotate(@degrees);
+			transform: rotate(@degrees);
+}
+.scale(@ratio) {
+	-webkit-transform: scale(@ratio);
+		-ms-transform: scale(@ratio);
+			transform: scale(@ratio);
+}
+.translate(@x, @y) {
+	-webkit-transform: translate(@x, @y);
+		-ms-transform: translate(@x, @y);
+			transform: translate(@x, @y);
+}
+.skew(@x, @y) {
+	-webkit-transform: skew(@x, @y);
+		-ms-transform: skewX(@x) skewY(@y);
+			transform: skew(@x, @y);
+}
+.translate3d(@x, @y, @z) {
+	-webkit-transform: translate3d(@x, @y, @z);
+		-ms-transform: translate3d(@x, @y, @z);
+			transform: translate3d(@x, @y, @z);
+}
+
+// Background size
+.background-size(@size) {
+	-webkit-background-size: @size;
+	   -moz-background-size: @size;
+		 -o-background-size: @size;
+			background-size: @size;
+}
+
+// Box sizing
+.box-sizing(@boxmodel) {
+	-webkit-box-sizing: @boxmodel;
+	   -moz-box-sizing: @boxmodel;
+			box-sizing: @boxmodel;
+}
+
+// Text rendering - Draft
+.text-rendering(@value) {
+	-webkit-text-rendering: @value;
+			text-rendering: @value;
+}
+
+// Font smoothing - Draft
+.font-smoothing(@value) {
+	-webkit-font-smoothing: @value;
+			font-smoothing: @value;
+}
+
+// Adjust text size on iOS
+.text-size-adjust(@value) {
+	-webkit-text-size-adjust: @value;
+			text-size-adjust: @value;
+}
+
+// Selections
+.selection(@background, @color) {
+	::-moz-selection {
+		background: @background;
+		color: @color;
+	}
+	::selection {
+		background: @background;
+		color: @color;
+	}
+}
+
+// Opacity
+.opacity(@opacity) {
+	opacity: @opacity;
+	// IE8 filter
+	@opacity-ie: (@opacity * 100);
+	filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+// Columns
+// -------------------------
+
+.make-column(@columns) {
+	position: relative;
+	// Float and set width: 100%; for easy stacking on mobile devices
+	float: left;
+	width: percentage((@columns / @grid-columns));
+	// Prevent columns from collapsing when empty
+	min-height: 1px;
+	// Inner gutter via padding
+	padding-left:  (@grid-gutter-width / 2);
+	padding-right: (@grid-gutter-width / 2);
+}
+
+// Gradients
+// -------------------------
+
+.gradient-vertical(@start-color: #555; @start-percent: 0%; @end-color: #333; @end-percent: 100%) {
+	background-color: @end-color;
+	background-image: -webkit-gradient(linear, left @start-percent, left @end-percent, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
+	background-image: -webkit-linear-gradient(top, @start-color, @start-percent, @end-color, @end-percent); // Safari 5.1+, Chrome 10+
+	background-image: -moz-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
+	background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
+	background-repeat: repeat-x;
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
+.gradient-image-vertical(@url: "../images/"; @start-color: #555; @start-percent: 0%; @end-color: #333; @end-percent: 100%) {
+	background-color: @end-color;
+	background-image: url(@url); // fallback
+	background-image: url(@url), -webkit-gradient(linear, left @start-percent, left @end-percent, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
+	background-image: url(@url), -webkit-linear-gradient(top, @start-color, @start-percent, @end-color, @end-percent); // Safari 5.1+, Chrome 10+
+	background-image: url(@url), -moz-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
+	background-image: url(@url), linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
+	background-repeat: repeat-x;
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
+// Reset filters for IE
+.reset-filter() {
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+}
+
+// Retina image support
+// -------------------------
+
+// Short retina mixin for setting background-image and -size
+.retina-image(@file-1x, @file-2x, @width-1x, @height-1x) {
+	background-image: url("@{file-1x}");
+
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (   min--moz-device-pixel-ratio: 2),
+	only screen and (     -o-min-device-pixel-ratio: 2/1),
+	only screen and (        min-device-pixel-ratio: 2),
+	only screen and (                min-resolution: 192dpi),
+	only screen and (                min-resolution: 2dppx) {
+		background-image: url("@{file-2x}");
+		background-size: @width-1x @height-1x;
+	}
+}
