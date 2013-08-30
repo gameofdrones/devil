@@ -14,6 +14,6 @@ import play.autosource.reactivemongo._
 
 import models._
 
-object Rooms extends EvilController[Room] {
-  val collectionName = "rooms"
+object Launchers extends EvilController[Launcher] {
+  val collectionName = "launchers"
 }
