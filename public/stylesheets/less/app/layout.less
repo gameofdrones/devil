@@ -53,9 +53,51 @@
 	}
 }
 
+.position {
+	.inputs {
+		&:extend(.big-input all);
+		height: 124px;
+
+		input[type="text"] {
+			width: 98%;
+			margin: 8px auto 0;
+		}
+	}
+
+	.fire-btn {
+		float: none;
+		margin: auto;
+
+		.outer { margin: 50px auto; }
+	}
+}
+
 // DASHBOARD
 .dashboard {
 	position: relative;
+
+	.center-btn {
+		margin-top: 80px;
+		text-align: center;
+	}
+
+	.btn {
+		text-decoration: none;
+		padding: 10px 40px;
+		margin-right: 20px;
+		color: #fff;
+		border: 1px solid darken(@main-color-2, 20%);
+		.box-shadow(0 1px rgba(255, 255, 255, .3) inset);
+		.gradient-vertical(@main-color, 0%, @main-color-2, 100%);
+		.border-radius(2px);
+
+		&:hover { .gradient-vertical(lighten(@main-color, 10%), 0%, @main-color-2, 100%); }
+
+		&:active {
+			position: relative;
+			top: 1px;
+		}
+	}
 
 	.logo img {
 		margin: 40px auto 0;
@@ -84,8 +126,6 @@
 		button {
 			width: 9%;
 			height: 39px;
-			
-			&:hover .rocket { .animation(rocketLaunch 3s ease); }
 		}
 
 		.rocket {
@@ -203,7 +243,8 @@
 			.transform(rotate(-45deg));
 
 			&:hover,
-			&:focus {
+			&:focus,
+			&.active {
 				background-color: rgba(255, 255, 255, .2);
 			}
 		}
