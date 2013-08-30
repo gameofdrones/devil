@@ -245,7 +245,7 @@
 			&:hover,
 			&:focus,
 			&.active {
-				background-color: rgba(255, 255, 255, .2);
+				background-color: rgba(255, 255, 255, .4);
 			}
 		}
 	}
@@ -269,7 +269,24 @@
 	margin-right: 200px;
 	cursor: pointer;
 
-	&:hover { .inner-text { .gradient-vertical(lighten(@main-color, 5%), 0%, lighten(@main-color-2, 5%), 100%); } }
+	&:hover {
+		.inner-text { .gradient-vertical(lighten(@main-color, 5%), 0%, lighten(@main-color-2, 5%), 100%); }
+	}
+
+	&.active {
+		.outer {
+			border: 1px solid darken(@red-color-2, 15%);
+			.gradient-vertical(@red-color, 0%, @red-color-2, 100%);
+		}
+		.inner {
+			border: 1px solid darken(@red-color-2, 10%);
+			.gradient-vertical(#ebebeb, 0%, #fff, 100%);
+		}
+		.inner-text {
+			border: 1px solid darken(@red-color-2, 10%);
+			.gradient-vertical(@red-color, 0%, @red-color-2, 100%);
+		}
+	}
 
 	.outer {
 		position: relative;
