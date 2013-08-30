@@ -1,12 +1,12 @@
 @()
 
 <div class="position">
-	<form action="" class="inputs left">
-		<input type="text" placeholder="X position">
-		<input type="text" placeholder="Y position">
+	<form class="inputs left">
+		<input type="text" placeholder="X position" ng-model="position.x">
+		<input type="text" placeholder="Y position" ng-model="position.y">
 	</form>
 
-	<div class="fire-btn right">
+	<div class="fire-btn right" ng-click="fire()">
 		<div class="outer">
 			<div class="inner">
 				<div class="inner-text">FIRE</div>
