@@ -1,10 +1,15 @@
 @()
 
 <div class="position">
-	<form class="inputs left">
-		<input type="text" placeholder="X position" ng-model="position.x">
-		<input type="text" placeholder="Y position" ng-model="position.y">
-	</form>
+	<div class="form-group">
+		<form class="inputs left">
+			<input type="text" placeholder="X position" ng-model="position.x">
+			<input type="text" placeholder="Y position" ng-model="position.y">
+		</form>
+
+		<a class="btn-a" ng-click="move()">Move</a>
+		<a class="btn-a second-btn" ng-click="reset()">Reset</a>
+	</div>
 
 	<div class="fire-btn right" ng-click="fire()">
 		<div class="outer">
@@ -14,6 +19,3 @@
 		</div>
 	</div>
 </div>
-
-<a class="btn-a" ng-click="move()">Move</a>
-<a class="btn-a" ng-click="reset()">Reset</a>

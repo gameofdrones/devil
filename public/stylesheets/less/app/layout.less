@@ -61,7 +61,8 @@
 		width: 30%;
 		height: 124px;
 		margin-left: 200px;
-		margin-top: 60px;
+		margin-top: 35px;
+		.clearfix();
 
 		input[type="text"] {
 			width: 96%;
@@ -209,7 +210,18 @@
 	}
 }
 
-.btn-a { &:extend(.dashboard .btn all); }
+.form-group {
+	position: relative;
+	
+	.btn-a {
+		&:extend(.dashboard .btn all);
+		position: absolute;
+		left: 200px;
+		top: 180px;
+
+		&.second-btn { left: 379px; }
+	}
+}
 
 // KEYBOARD
 .controls {
