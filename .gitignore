@@ -13,3 +13,16 @@ dist
 /.project
 /RUNNING_PID
 /.settings
+.DS_Store
+
+bower_components
+node_modules
+
+conf/local.conf
+
+/public/javascripts/vendors
+/public/javascripts/app.*.min.js
+/public/stylesheets/fonts/vendors
+/public/stylesheets/less/vendors
+/public/stylesheets/main.*.min.css
+/public/stylesheets/main.css
