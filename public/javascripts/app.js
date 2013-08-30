@@ -20,6 +20,9 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
 
       $urlRouterProvider.otherwise("/");
   }])
+  .config(["RestangularProvider", function(RestangularProvider) {
+    RestangularProvider.setBaseUrl("/api");
+  }])
   .run(["$rootScope", "$state", "$stateParams", "$log", "$location",
     function ($rootScope, $state, $stateParams, $log, $location) {
     "use strict";
@@ -29,7 +32,10 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 
-    $rootScope.selection = {
-      launchers: []
+    $rootScope.launchers = [];
+    $rootScope.selectedLaunchers = function () {
+      return _.filter($rootScope.launchers, function (launcher) {
+        return launcher.selected;
+      });
     };
   }]);

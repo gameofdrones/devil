@@ -16,4 +16,5 @@ import models._
 
 object Rooms extends EvilController[Room] {
   val collectionName = "rooms"
+  val coll = db.collection[JSONCollection]("rooms")
 }

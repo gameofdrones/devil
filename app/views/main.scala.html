@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 
-<html class="no-js" data-ng-app="devil">
+<html class="no-js" ng-app="devil">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -21,69 +21,34 @@
     <script src="@routes.Assets.at("javascripts/vendors/modernizr/modernizr.js")" type="text/javascript"></script>
   </head>
   <body>
-	<!-- <div class="grid">
-		<h1 class="logo"><img src="../assets/images/logo.png" alt=""></h1>
 
-		<form action="" class="big-input">
-			<input type="text" class="left">
-			<button type="submit" class="right"><span class="icon-plus"></span></button>
-		</form>
-	</div> -->
+  <div ng-controller="LauncherCtrl">
+  	<div class="grid" ng-class="{dashboard: launchers.length}">
+  		<h1 class="logo"><img src="../assets/images/logo.png" alt=""></h1>
 
-	<div class="grid dashboard">
-		<h1 class="logo"><img src="../assets/images/logo.png" alt=""></h1>
-
-		<!-- Ajout nouveau drône -->
-		<form action="" class="medium-input">
-			<input type="text" class="left">
-			<button type="submit" class="right"><span class="icon-plus"></span><div class="rocket"><img src="../assets/images/rocket.png" alt=""></div></button>
-		</form>
+  		<form ng-class="{'big-input': !launchers.length,'medium-input': launchers.length}" ng-submit="add()">
+  			<input type="text" class="left"  ng-model="newLauncher.url">
+  			<button type="submit" class="right"><span class="icon-plus"></span><div class="rocket"><img src="../assets/images/rocket.png" alt=""></div></button>
+  		</form>
+  	
 
 
-		<div class="control-nav">
-			<span class="icon-chevron-sign-up"></span>
-			<span class="icon-chevron-sign-down"></span>
-		</div>
+  		<div class="control-nav">
+  			<span class="icon-chevron-sign-up"></span>
+  			<span class="icon-chevron-sign-down"></span>
+  		</div>
 
-		<!-- Listes drônes hauteur fixe -->
-		<ul class="list-drones">
-			<li>
-				<div class="inner-content">
-					<img src="../assets/images/dream-cheeky.png" alt="">
-					<h3 class="ip">192.168.0.40</h3>
-				</div>
-			</li>
-			<li class="active">
-				<div class="inner-content">
-					<img src="../assets/images/dream-cheeky.png" alt="">
-					<h3 class="ip">192.168.0.40</h3>
-				</div>
-			</li>
-			<li>
-				<div class="inner-content">
-					<img src="../assets/images/dream-cheeky.png" alt="">
-					<h3 class="ip">192.168.0.40</h3>
-				</div>
-			</li>
-			<li>
-				<div class="inner-content">
-					<img src="../assets/images/dream-cheeky.png" alt="">
-					<h3 class="ip">192.168.0.40</h3>
-				</div>
-			</li>
-			<li class="active">
-				<div class="inner-content">
-					<img src="../assets/images/dream-cheeky.png" alt="">
-					<h3 class="ip">192.168.0.40</h3>
-				</div>
-			</li>
-			<li>
-				<div class="inner-content">
-					<img src="../assets/images/dream-cheeky.png" alt="">
-					<h3 class="ip">192.168.0.40</h3>
-				</div>
-			</li>
-		</ul>
+  		<!-- Listes drônes hauteur fixe -->
+  		<ul class="list-drones">
+  			<li ng-repeat="l in launchers" ng-class="{active: l.selected}" ng-click="toggle(l)">
+  				<div class="inner-content">
+  					<img src="../assets/images/dream-cheeky.png" alt="">
+  					<h3 class="ip">{{l.url}}</h3>
+  				</div>
+  			</li>
+  		</ul>
+    </div>
+  </div>
 
 		<!-- Actions - position (x, y, fire) / input (manuel, keyboard, fire) -->
 		<ul class="actions">
@@ -104,7 +69,10 @@
       <script src="@routes.Assets.at("javascripts/vendors/angular-ui/router/angular-ui-router.js")" type="text/javascript"></script>
       <script src="@routes.Assets.at("javascripts/vendors/angular-ui/utils/ui-utils.js")" type="text/javascript"></script>
       <script src="@routes.Assets.at("javascripts/vendors/restangular/restangular.js")" type="text/javascript"></script>
+
       <script src="@routes.Assets.at("javascripts/app.js")" type="text/javascript"></script>
+      <script src="@routes.Assets.at("javascripts/launcher/LauncherFactory.js")" type="text/javascript"></script>
+      <script src="@routes.Assets.at("javascripts/launcher/LauncherController.js")" type="text/javascript"></script>
 
       <script src="http://localhost:35729/livereload.js?snipver=1" type="text/javascript"></script>
     }

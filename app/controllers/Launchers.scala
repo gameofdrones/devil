@@ -16,4 +16,5 @@ import models._
 
 object Launchers extends EvilController[Launcher] {
   val collectionName = "launchers"
+  val coll = db.collection[JSONCollection]("launchers")
 }

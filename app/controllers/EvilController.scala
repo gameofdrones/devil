@@ -16,5 +16,5 @@ import play.api.Play.current
 
 trait EvilController[T] extends ReactiveMongoAutoSourceController[T] {
   def collectionName: String
-  val coll = db.collection[JSONCollection](collectionName)
+  //val coll = db.collection[JSONCollection](collectionName)
 }
