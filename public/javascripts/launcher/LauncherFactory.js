@@ -13,14 +13,14 @@ app.factory("Launchers", ["Restangular", "$http", function (Restangular, $http) 
   };
 
   Launcher.prototype.fireAt = function (x, y) {
-    x = _.isNumber(x) ? x : _.random(100);
-    y = _.isNumber(y) ? y : _.random(10);
+    x = parseInt(x, 10);
+    y = parseInt(y, 10);
     return this.api.all("rocket").doPUT({x: x, y: y});
   };
 
   Launcher.prototype.goTo = function (x, y) {
-    x = _.isNumber(x) ? x : 0;
-    y = _.isNumber(y) ? y : 0;
+    x = parseInt(x, 10);
+    y = parseInt(y, 10);
     return this.api.all("position").doPUT({x: x, y: y});
   };
 
