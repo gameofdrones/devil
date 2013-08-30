@@ -28,4 +28,8 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
     $rootScope.$location = $location;
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    $rootScope.selection = {
+      launchers: []
+    };
   }]);
