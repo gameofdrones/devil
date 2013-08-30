@@ -19,7 +19,13 @@ app.factory("Launchers", ["Restangular", "$http", function (Restangular, $http) 
   };
 
   Launcher.prototype.goTo = function (x, y) {
+    x = _.isNumber(x) ? x : 0;
+    y = _.isNumber(y) ? y : 0;
+    return this.api.all("position").doPUT({x: x, y: y});
+  };
 
+  Launcher.prototype.reset = function () {
+    return this.api.all("position").doDELETE();
   };
 
   Launcher.prototype.start = function (action) {

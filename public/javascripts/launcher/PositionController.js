@@ -12,6 +12,18 @@ app.controller("PositionCtrl", ["$scope", "$rootScope", function ($scope, $rootS
     }
   };
 
+  $scope.move = function () {
+    _.forEach($rootScope.selectedLaunchers(), function (launcher) {
+      launcher.goTo($scope.position.x, $scope.position.y);
+    });
+  };
+
+  $scope.reset = function () {
+    _.forEach($rootScope.selectedLaunchers(), function (launcher) {
+      launcher.reset();
+    });
+  };
+
   keypress.register_combo({
     "keys": "space",
     "on_keydown": function () {
