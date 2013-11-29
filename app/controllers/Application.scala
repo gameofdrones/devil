@@ -20,5 +20,9 @@ object Application extends Controller {
   def keyboard = Action {
     Ok(views.html.keyboard())
   }
+
+  def targets = Action {
+    Ok(views.html.targets())
+  }
   
 }

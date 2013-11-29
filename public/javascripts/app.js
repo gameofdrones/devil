@@ -22,6 +22,11 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
         url: "/keyboard",
         templateUrl: "/views/keyboard",
         controller: "KeyboardCtrl"
+      })
+      .state("targets", {
+        url: "/targets",
+        templateUrl: "/views/targets",
+        controller: "TargetCtrl"
       });
 
       $urlRouterProvider.otherwise("/");
