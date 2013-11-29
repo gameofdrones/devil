@@ -10,7 +10,9 @@ app.controller("TargetCtrl", ["$scope", "$rootScope", "Targets", function ($scop
 
   $scope.fire = function (mark) {
     _.forEach($rootScope.selectedLaunchers(), function (launcher) {
-      launcher.fireAt(mark.x, mark.y);
+      if(mark) {
+        launcher.fireAt(mark.x, mark.y);
+      }
     });
 
     if (!$scope.isDigesting()) {
@@ -43,11 +45,4 @@ app.controller("TargetCtrl", ["$scope", "$rootScope", "Targets", function ($scop
       launcher.reset();
     });
   };
-
-  keypress.register_combo({
-    "keys": "space",
-    "on_keydown": function () {
-      $scope.fire();
-    }
-  });
 }]);
