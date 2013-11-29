@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
     <title>Devil</title>
-
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/semantic.min.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|PT+Serif:400,700' rel='stylesheet' type='text/css'>
@@ -26,10 +26,12 @@
 		<div class="grid" ng-class="{dashboard: launchers.length}">
 			<h1 class="logo"><img src="../assets/images/logo.svg" alt=""></h1>
 
-			<form ng-class="{'big-input': !launchers.length,'medium-input': launchers.length}" ng-submit="add()">
-				<input type="text" class="left"  ng-model="newLauncher.url">
-				<button type="submit" class="right"><span class="icon-plus"></span></button>
-				<!-- <div class="rocket"><img src="../assets/images/rocket.png" alt=""></div> -->
+			<form  ng-submit="add()">
+
+        <div class="ui action input add-input">
+          <input type="text" "Launcher URL" ng-model="newLauncher.url" style="width:400px;">
+          <button type="submit" class="ui blue right labeled icon button"><i class="add icon"></i> Add</button>
+        </div>
 			</form>
 
 			<!-- <div class="control-nav">
@@ -41,16 +43,17 @@
 			<ul class="list-drones">
 				<li ng-repeat="l in launchers" ng-class="{active: l.selected}" ng-click="toggle(l)">
 					<div class="inner-content">
-						<img src="{{l.motionURL}}" alt="">
+						<img src="{{l.motionURL}}" alt="" width="320" height="240">
 						<h3 class="ip">{{l.url}}</h3>
 					</div>
 				</li>
 			</ul>
 
 			<div class="center-btn">
-				<a class="btn" href="/position">Position</a>
-				<a class="btn" href="/keyboard">Keyboard</a>
-                                <a class="btn" href="/gallery">Gallery</a>
+        <a class="ui blue button" href="/targets">Targets</a>
+				<a class="ui blue button" href="/position">Position</a>
+				<a class="ui blue button" href="/keyboard">Keyboard</a>
+        <a class="ui blue button" href="/gallery">Gallery</a>
 			</div>
 		</div>
 	</div>
@@ -73,6 +76,8 @@
       <script src="@routes.Assets.at("javascripts/launcher/LauncherController.js")" type="text/javascript"></script>
       <script src="@routes.Assets.at("javascripts/launcher/PositionController.js")" type="text/javascript"></script>
       <script src="@routes.Assets.at("javascripts/launcher/KeyboardController.js")" type="text/javascript"></script>
+      <script src="@routes.Assets.at("javascripts/launcher/TargetFactory.js")" type="text/javascript"></script>
+      <script src="@routes.Assets.at("javascripts/launcher/TargetController.js")" type="text/javascript"></script>
 
       <script src="http://localhost:35729/livereload.js?snipver=1" type="text/javascript"></script>
     }

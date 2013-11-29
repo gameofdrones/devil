@@ -11,11 +11,13 @@ GET     /views/index                   controllers.Application.index
 GET     /views/position                controllers.Application.position
 GET     /views/keyboard                controllers.Application.keyboard
 GET     /views/gallery                 controllers.Application.gallery
+GET     /views/targets                 controllers.Application.targets
 
 # ####### API
 # (serving JSON, used in Angular services)
 ->      /api/launchers                 controllers.Launchers
 ->      /api/rooms                     controllers.Rooms
+->      /api/targets                   controllers.Targets
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                  controllers.Assets.at(path="/public", file)

@@ -1,0 +1,40 @@
+@()
+
+<div class="mark">
+
+    <div class="form-group">
+        <form class="targetForm">
+
+            <div class="ui labeled input">
+              <input type="text" placeholder="Target Name..." ng-model="newTarget.name">
+            </div>
+
+            <div class="ui labeled input">
+              <input type="text" placeholder="X Position..." ng-model="newTarget.x">
+            </div>
+
+            <div class="ui labeled input">
+              <input type="text" placeholder="Y Position..." ng-model="newTarget.y">
+            </div>
+            <a class="ui blue button" ng-click="add()">Add<i class="add icon"></i></a>
+        </form>
+
+    </div>
+
+    <div class="ui divided list">
+        <span>Target List</span>
+        <div ng-repeat="t in targets" class="item">
+            <div class="right floated tiny">
+                <div class="mini ui red button" ng-click="fire(t)">Fire<i class="bolt icon"></i></div>
+                <div class="mini ui green button" ng-click="move(t)">Aim<i class="screenshot icon"></i></div>
+            </div>
+            <i class="user icon"></i>
+            <div class="content">
+              <div class="header">{{t.name}}</div>
+            </div>
+            <div>
+              <span>Position: {{t.x}}, {{t.y}}</span>
+            </div>
+        </div>
+    </div>
+</div>
