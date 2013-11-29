@@ -9,40 +9,31 @@
               <input type="text" placeholder="Target Name..." ng-model="newTarget.name">
             </div>
 
-            <br />
-
             <div class="ui labeled input">
               <input type="text" placeholder="X Position..." ng-model="newTarget.x">
             </div>
 
-            <br />
-
             <div class="ui labeled input">
               <input type="text" placeholder="Y Position..." ng-model="newTarget.y">
             </div>
+            <a class="ui blue button" ng-click="add()">Add<i class="add icon"></i></a>
         </form>
 
-        <a class="ui blue button" ng-click="add()">Add<i class="add icon"></i></a> 
-        <a class="ui red button" ng-click="reset()">Reset<i class="remove icon"></i></a>
     </div>
 
     <div class="ui divided list">
-        Target List
+        <span>Target List</span>
         <div ng-repeat="t in targets" class="item">
             <div class="right floated tiny">
+                <div class="mini ui red button" ng-click="fire(t)">Fire<i class="bolt icon"></i></div>
                 <div class="mini ui green button" ng-click="move(t)">Aim<i class="screenshot icon"></i></div>
             </div>
             <i class="user icon"></i>
             <div class="content">
               <div class="header">{{t.name}}</div>
             </div>
-        </div>
-    </div>
-
-    <div class="fire-btn right" ng-click="fire()">
-        <div class="outer">
-            <div class="inner">
-                <div class="inner-text">FIRE</div>
+            <div>
+              <span>Position: {{t.x}}, {{t.y}}</span>
             </div>
         </div>
     </div>

@@ -8,10 +8,9 @@ app.controller("TargetCtrl", ["$scope", "$rootScope", "Targets", function ($scop
 
   $scope.mark = {};
 
-  $scope.fire = function () {
-    console.log("fire at", $scope.mark);
+  $scope.fire = function (mark) {
     _.forEach($rootScope.selectedLaunchers(), function (launcher) {
-      launcher.fireAt($scope.mark.x, $scope.mark.y);
+      launcher.fireAt(mark.x, mark.y);
     });
 
     if (!$scope.isDigesting()) {

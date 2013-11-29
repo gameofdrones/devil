@@ -3,18 +3,18 @@
 <div class="position">
 	<div class="form-group">
 		<form class="inputs left">
-			<input type="text" placeholder="X position" ng-model="position.x">
-			<input type="text" placeholder="Y position" ng-model="position.y">
+			<input type="text" placeholder="X position" ng-model="position.x" class="ui input">
+			<input type="text" placeholder="Y position" ng-model="position.y" class="ui input">
 		</form>
 
-		<a class="btn-a" ng-click="move()">Move</a>
-		<a class="btn-a second-btn" ng-click="reset()">Reset</a>
+		<a class="btn-a ui blue button" ng-click="move()">Move</a>
+		<a class="btn-a ui red button second-btn" ng-click="reset()">Reset</a>
 	</div>
 
 	<div class="fire-btn right" ng-click="fire()">
 		<div class="outer">
 			<div class="inner">
-				<div class="inner-text">FIRE</div>
+				<div class="inner-text"><i class="bolt large icon" style="margin:0"></i></div>
 			</div>
 		</div>
 	</div>
