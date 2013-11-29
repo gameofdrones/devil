@@ -21,16 +21,12 @@ object Application extends Controller {
     Ok(views.html.keyboard())
   }
 
-<<<<<<< HEAD
   def gallery = Action {
     Ok(views.html.gallery())
   }
 
-}
-=======
   def targets = Action {
     Ok(views.html.targets())
   }
   
 }
->>>>>>> nse-targets
