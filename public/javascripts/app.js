@@ -18,6 +18,11 @@ var app = angular.module("devil", ["restangular", "ui.state", "ui.utils"])
         templateUrl: "/views/position",
         controller: "PositionCtrl"
       })
+      .state("gallery", {
+        url: "/gallery",
+        templateUrl: "/views/gallery",
+        controller: "GalleryCtrl"
+      })
       .state("keyboard", {
         url: "/keyboard",
         templateUrl: "/views/keyboard",

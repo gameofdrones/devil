@@ -10,6 +10,7 @@ GET     /                              controllers.Application.main(url = "")
 GET     /views/index                   controllers.Application.index
 GET     /views/position                controllers.Application.position
 GET     /views/keyboard                controllers.Application.keyboard
+GET     /views/gallery                 controllers.Application.gallery
 
 # ####### API
 # (serving JSON, used in Angular services)

@@ -4,7 +4,7 @@ import play.api._
 import play.api.mvc._
 
 object Application extends Controller {
-  
+
   def main(url: String) = Action {
     Ok(views.html.main())
   }
@@ -20,5 +20,9 @@ object Application extends Controller {
   def keyboard = Action {
     Ok(views.html.keyboard())
   }
-  
+
+  def gallery = Action {
+    Ok(views.html.gallery())
+  }
+
 }
