@@ -2,6 +2,7 @@ app.factory("Launchers", ["Restangular", "$http", function (Restangular, $http) 
   function Launcher (data) {
     this.id = data.id;
     this.url = data.url;
+    this.motionURL = this.url.replace(this.url.split(":")[2], "8081");
     this.actions = {};
     this.api = Restangular.withConfig(function(RestangularConfigurer) {
       RestangularConfigurer.setBaseUrl(data.url);
