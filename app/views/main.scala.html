@@ -27,10 +27,12 @@
 		<div class="grid" ng-class="{dashboard: launchers.length}">
 			<h1 class="logo"><img src="../assets/images/logo.svg" alt=""></h1>
 
-			<form ng-class="{'big-input': !launchers.length,'medium-input': launchers.length}" ng-submit="add()">
-				<input type="text" class="left"  ng-model="newLauncher.url">
-				<button type="submit" class="right"><span class="icon-plus"></span></button>
-				<!-- <div class="rocket"><img src="../assets/images/rocket.png" alt=""></div> -->
+			<form  ng-submit="add()">
+
+        <div class="ui action input add-input">
+          <input type="text" "Launcher URL" ng-model="newLauncher.url" style="width:400px;">
+          <button type="submit" class="ui blue right labeled icon button"><i class="add icon"></i> Add</button>
+        </div>
 			</form>
 		
 			<!-- <div class="control-nav">
@@ -49,8 +51,9 @@
 			</ul>
 
 			<div class="center-btn">
-				<a class="btn" href="/position">Position</a>
-				<a class="btn" href="/keyboard">Keyboard</a>
+        <a class="ui blue button" href="/targets">Targets</a>
+				<a class="ui blue button" href="/position">Position</a>
+				<a class="ui blue button" href="/keyboard">Keyboard</a>
 			</div>
 		</div>
 	</div>

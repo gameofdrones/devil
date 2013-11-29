@@ -6,6 +6,13 @@
 	}
 }
 
+.add-input {
+	margin: 0 auto;
+	input[type="text"] {
+		width: 400px;
+	}
+}
+
 // HOMEPAGE
 .targetForm {
 	div
@@ -294,21 +301,21 @@
 	cursor: pointer;
 
 	&:hover {
-		.inner-text { .gradient-vertical(lighten(@main-color, 5%), 0%, lighten(@main-color-2, 5%), 100%); }
+		.inner-text { .gradient-vertical(lighten(#D95C5C, 5%), 0%, lighten(#D95C5C, 5%), 100%); }
 	}
 
 	&.active {
 		.outer {
-			border: 1px solid darken(@red-color-2, 15%);
-			.gradient-vertical(@red-color, 0%, @red-color-2, 100%);
+			border: 1px solid darken(#D95C5C, 15%);
+			.gradient-vertical(#D95C5C, 0%, #D95C5C, 100%);
 		}
 		.inner {
-			border: 1px solid darken(@red-color-2, 10%);
+			border: 1px solid darken(#D95C5C, 10%);
 			.gradient-vertical(#ebebeb, 0%, #fff, 100%);
 		}
 		.inner-text {
-			border: 1px solid darken(@red-color-2, 10%);
-			.gradient-vertical(@red-color, 0%, @red-color-2, 100%);
+			border: 1px solid darken(#D95C5C, 10%);
+			.gradient-vertical(#D95C5C, 0%, #D95C5C, 100%);
 		}
 	}
 
@@ -316,10 +323,10 @@
 		position: relative;
 		width: 250px;
 		height: 250px;
-		border: 1px solid darken(@main-color-2, 15%);
+		border: 1px solid darken(#D95C5C, 15%);
 		.border-radius(100%);
 		.box-shadow(0 1px rgba(255, 255, 255, .3) inset);
-		.gradient-vertical(@main-color, 0%, @main-color-2, 100%);
+		.gradient-vertical(#D95C5C, 0%, #D95C5C, 100%);
 	}
 
 	.inner {
@@ -328,7 +335,7 @@
 		right: 30px;
 		left: 30px;
 		bottom: 30px;
-		border: 1px solid darken(@main-color-2, 10%);
+		border: 1px solid darken(#D95C5C, 10%);
 		.border-radius(100%);
 		.box-shadow(0 1px 2px rgba(0, 0, 0, .2) inset);
 		.gradient-vertical(#ebebeb, 0%, #fff, 100%);
@@ -345,8 +352,8 @@
 		font-size: 28px;
 		color: #fff;
 		text-transform: uppercase;
-		border: 1px solid darken(@main-color-2, 10%);
+		border: 1px solid darken(#D95C5C, 10%);
 		.border-radius(100%);
-		.gradient-vertical(@main-color, 0%, @main-color-2, 100%);
+		.gradient-vertical(#D95C5C, 0%, #D95C5C, 100%);
 	}
 }
