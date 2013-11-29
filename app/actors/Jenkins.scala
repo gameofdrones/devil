@@ -69,16 +69,23 @@ class Jenkins extends Actor with ActorLogging {
         }
       } yield culprits
 
-      c.map { all => all.foreach { c =>
-        val name = c.replace(s"$root/user/", "").substring(0, 3)
-        for {
-          t   <- db.Users.fetchUserPosition(name)
-          u   <- t match {
-            case Some((url, x, y))  => WS.url(s"$url/position").put( Json.obj( "x" -> x, "y" ->  y ) )
-            case _                  => Future.successful()
-          }
-        } yield u
-      }}
+      c.map { all =>
+        play.Logger.debug("Culprits : %s".format(all.toString))
+        all.foreach { c =>
+          val name = c.replace(s"$root/user/", "").substring(0, 3)
+          play.Logger.debug(s"Name : $name")
+          for {
+            t   <- db.Users.fetchUserPosition(name)
+            u   <- t match {
+              case Some((url, x, y))  => {
+                play.Logger.debug(s"Url : $url - $x - $y")
+                WS.url(s"$url/rocket").put( Json.obj( "x" -> x.toInt, "y" ->  y.toInt ) )
+              }
+              case _                  => Future.successful()
+            }
+          } yield u
+        }
+      }
     }
   }
 }
