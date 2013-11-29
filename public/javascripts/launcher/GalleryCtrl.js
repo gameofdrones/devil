@@ -2,6 +2,9 @@ app.controller("GalleryCtrl", ["$scope", "$rootScope", function ($scope, $rootSc
 
   $scope.actions = {};
 
+  var url = $rootScope.selectedLaunchers()[0].url;
+  $scope.galleryURL = url.replace(url.split(":")[2], "9001");
+
   $scope.start = function (action) {
     $scope.actions[action] = true;
     _.forEach($rootScope.selectedLaunchers(), function (launcher) {
