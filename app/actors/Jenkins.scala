@@ -70,9 +70,14 @@ class Jenkins extends Actor with ActorLogging {
       } yield culprits
 
       c.map { all => all.foreach { c =>
-        play.Logger.error(c);
-        WS.url("http://10.0.25.113:9000/position")
-          .put( Json.obj( "x" -> scala.util.Random.nextInt % 100, "y" ->  scala.util.Random.nextInt % 10) )
+        val name = c.replace(s"$root/user/", "").substring(0, 3)
+        for {
+          t   <- db.Users.fetchUserPosition(name)
+          u   <- t match {
+            case Some((url, x, y))  => WS.url(s"$url/position").put( Json.obj( "x" -> x, "y" ->  y ) )
+            case _                  => Future.successful()
+          }
+        } yield u
       }}
     }
   }
