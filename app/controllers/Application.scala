@@ -6,6 +6,7 @@ import play.api.mvc._
 object Application extends Controller {
 
   def main(url: String) = Action {
+    PullLastShots.asyncPull
     Ok(views.html.main())
   }
 

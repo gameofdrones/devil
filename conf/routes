@@ -19,6 +19,8 @@ GET     /views/targets                 controllers.Application.targets
 ->      /api/rooms                     controllers.Rooms
 ->      /api/targets                   controllers.Targets
 
+GET     /api/shots                     controllers.PullLastShots.listImages
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                  controllers.Assets.at(path="/public", file)
 
