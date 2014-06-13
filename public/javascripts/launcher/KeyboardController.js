@@ -1,5 +1,5 @@
 app.controller("KeyboardCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
-  
+
   $scope.actions = {};
 
   $scope.start = function (action) {
@@ -24,50 +24,60 @@ app.controller("KeyboardCtrl", ["$scope", "$rootScope", function ($scope, $rootS
 
   keypress.register_combo({
     "keys": "space",
-    "on_keydown": function () {
+    "on_keydown": function (e) {
+      e.preventDefault();
       $scope.start("fire");
     },
-    "on_keyup": function () {
+    "on_keyup": function (e) {
+      e.preventDefault();
       $scope.end("fire");
     }
   });
 
   keypress.register_combo({
     "keys": "up",
-    "on_keydown": function () {
+    "on_keydown": function (e) {
+      e.preventDefault();
       $scope.start("up");
     },
-    "on_keyup": function () {
+    "on_keyup": function (e) {
+      e.preventDefault();
       $scope.end("up");
     }
   });
 
   keypress.register_combo({
     "keys": "down",
-    "on_keydown": function () {
+    "on_keydown": function (e) {
+      e.preventDefault();
       $scope.start("down");
     },
-    "on_keyup": function () {
+    "on_keyup": function (e) {
+      e.preventDefault();
       $scope.end("down");
     }
   });
 
   keypress.register_combo({
     "keys": "left",
-    "on_keydown": function () {
+    "on_keydown": function (e) {
+      e.preventDefault();
       $scope.start("left");
     },
-    "on_keyup": function () {
+    "on_keyup": function (e) {
+      e.preventDefault();
       $scope.end("left");
     }
   });
 
   keypress.register_combo({
     "keys": "right",
-    "on_keydown": function () {
+    "on_keydown": function (e) {
+      e.preventDefault();
       $scope.start("right");
     },
-    "on_keyup": function () {
+    "on_keyup": function (e) {
+      e.preventDefault();
       $scope.end("right");
     }
   });
